@@ -313,6 +313,16 @@
   - [APC and discounts](https://www.mdpi.com/journal/materials/apc)
   - [Article types and author instructions](https://www.mdpi.com/journal/materials/instructions)
 
+## Faster documented acceptance
+
+The website highlights journals with an official publisher-reported **submission-to-acceptance measure of 90 days or less**. Green badges are publisher medians and form the comparable shortlist; amber badges indicate a mean or a statistic whose mean/median definition is not published, so they are shown separately.
+
+**Median-based highlights (≤90 days):** Macromolecules (86 days), ACS Applied Materials & Interfaces (71.5 days), Journal of Chemical Information and Modeling (76.3 days), Journal of Physical Chemistry B (80.3 days), and ACS Applied Polymer Materials (70.2 days). ACS states these submission-to-acceptance medians include author revision time. [ACS Journal Metrics](https://pubs.acs.org/journal-metrics)
+
+**Other publisher-reported signals (not directly comparable):** Chemical Engineering Journal (74 days submission-to-acceptance; Elsevier does not specify mean or median on the page), and Journal of Chemical Physics (78-day average to acceptance from AIP). [Chemical Engineering Journal](https://www.sciencedirectelsevier.com/journal/Chemical-Engineering-Journal) · [AIP Journal of Chemical Physics metrics](https://publishing.aip.org/resources/topical-portfolios/explore-chemical-physics-with-aip-publishing/)
+
+A quick first editorial decision or acceptance-to-online interval alone does not qualify. For example, MDPI Materials reports acceptance-to-publication speed but no comparable submission-to-acceptance median in the checked profile, so it is not highlighted. Speed is a planning signal, not an acceptance probability.
+
 ## How to interpret incomplete fields
 
 - Exact current Clarivate Core Collection status (for example SCIE versus ESCI) was not independently reconciled for every title by ISSN in this audit. Use the live [Clarivate Master Journal List](https://mjl.clarivate.com/home) to confirm active coverage before submission; a WoS frequency row or JIF alone should not substitute for a title/ISSN match. The supplied `JOURNAL OF POLYMER COMPOSITES` title has a specific unresolved identity match.

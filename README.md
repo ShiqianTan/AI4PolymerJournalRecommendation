@@ -11,7 +11,7 @@ A practical, evidence-aware journal discovery and matching tool for AI4Polymer a
 - Search and filter 977 journals, with a configurable WoS record threshold (default: 10).
 - Match journals to polymer, AI/computing, materials, chemistry, and engineering topics. Match scores explain title-based signals; they are not acceptance probabilities.
 - Review 22 priority profiles with publisher-sourced scope, article types, metrics, stage-specific timing, OA options, fees, and links.
-- Explore three figures and a sortable Excel database with source and method notes.
+- Explore three figures and a sortable Excel database with source and method notes, including publisher-reported acceptance-speed highlights.
 
 ## Research landscape
 
