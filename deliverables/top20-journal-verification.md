@@ -315,6 +315,7 @@
 
 ## How to interpret incomplete fields
 
+- Exact current Clarivate Core Collection status (for example SCIE versus ESCI) was not independently reconciled for every title by ISSN in this audit. Use the live [Clarivate Master Journal List](https://mjl.clarivate.com/home) to confirm active coverage before submission; a WoS frequency row or JIF alone should not substitute for a title/ISSN match. The supplied `JOURNAL OF POLYMER COMPOSITES` title has a specific unresolved identity match.
 - Publisher dashboards may use different data years, accepted-paper cohorts, means versus medians, and definitions. Editorial first decision can include desk screening. Submission-to-acceptance typically includes author revision time when stated; acceptance-to-online is a separate stage.
 - Acceptance rate, desk-rejection rate, post-review acceptance rate, review-round count, and reviewer-quality ratings are generally not disclosed in a comparable official format. A blank or unverified field is not zero.
 - Hybrid journals generally retain a subscription route; exact APCs, tax, institutional agreements, and waiver eligibility must be checked on the live publisher page. This check intentionally does not estimate undisclosed costs.
