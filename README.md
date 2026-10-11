@@ -10,7 +10,7 @@ A practical, evidence-aware journal discovery and matching tool for AI4Polymer a
 
 - Search and filter 977 journals, with a configurable WoS record threshold (default: 10).
 - Match journals to polymer, AI/computing, materials, chemistry, and engineering topics. Match scores explain title-based signals; they are not acceptance probabilities.
-- Review 11 priority profiles with publisher-sourced scope, article types, metrics, stage-specific timing, OA options, fees, and links.
+- Review 22 priority profiles with publisher-sourced scope, article types, metrics, stage-specific timing, OA options, fees, and links.
 - Explore three figures and a sortable Excel database with source and method notes.
 
 ## Research landscape
@@ -29,12 +29,13 @@ A practical, evidence-aware journal discovery and matching tool for AI4Polymer a
 
 The source summary totals 3,267 records. Its percentages are rounded to three decimal places and sum to 100.144%. The search query and publication-year window are not included, so counts should not be interpreted as annual output, acceptance rates, or current popularity. Subject clusters are inferred from journal titles. Metrics, fees, policies, and timing change; verify publisher sources before submitting. A fast first decision can include editorial screening and is not the same as fast external review. Submission-to-acceptance includes author revision time when reported; acceptance-to-online is a separate stage.
 
-The 11 priority profiles were checked against publisher sources on October 11, 2026. For the other titles, publisher-specific scope and policies remain unverified.
+All 20 most frequent titles are covered by publisher-source profiles checked on October 11, 2026; two additional Nature portfolio titles retained from the earlier review are also included. The supplied WoS title `JOURNAL OF POLYMER COMPOSITES` has an unresolved title/ISSN match and is explicitly flagged. Read the [Top 20 verification report](deliverables/top20-journal-verification.md) for the comparison and source links. Remaining database titles are discovery candidates, not individually verified profiles.
 
 ## Project files
 
 - `deliverables/index.html` — interactive journal explorer; `index.html` at the repository root routes to it.
-- `deliverables/AI4Polymer_journal_guide.xlsx` — journal database, priority profiles, and source/method notes.
+- `deliverables/AI4Polymer_journal_guide.xlsx` — journal database, 22 priority profiles, and source/method notes.
+- `deliverables/top20-journal-verification.md` — ranked comparison of publisher-checked information, timing definitions, and source links.
 - `deliverables/assets/` — SVG figures shown above and in the explorer.
 - `deliverables/draw_figures.py` — regenerates the figures from data embedded in the explorer.
 
