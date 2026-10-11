@@ -1,5 +1,7 @@
 # AI4Polymer Journal Explorer
 
+![AI4Polymer Journal Explorer — journal matching for polymer informatics](deliverables/assets/ai4polymer-journal-explorer-banner.png)
+
 A practical, evidence-aware journal discovery and matching tool for AI4Polymer and polymer informatics.
 
 **Web of Science journal data updated through October 11, 2026.** The supplied file contains 977 unique journal titles and 3,267 records.
@@ -36,7 +38,7 @@ All 20 most frequent titles are covered by publisher-source profiles checked on 
 - `deliverables/index.html` — interactive journal explorer; `index.html` at the repository root routes to it.
 - `deliverables/AI4Polymer_journal_guide.xlsx` — journal database, 22 priority profiles, and source/method notes.
 - `deliverables/top20-journal-verification.md` — ranked comparison of publisher-checked information, timing definitions, and source links.
-- `deliverables/assets/` — SVG figures shown above and in the explorer.
+- `deliverables/assets/` — README banner and SVG figures shown above and in the explorer.
 - `deliverables/draw_figures.py` — regenerates the figures from data embedded in the explorer.
 
 To regenerate figures, run `python3 deliverables/draw_figures.py`. GitHub Pages serves the interactive site at the live link above.
