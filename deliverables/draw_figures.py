@@ -14,6 +14,7 @@ data = json.loads(m.group(1))
 rows = data["records"]
 out = ROOT / "assets"
 out.mkdir(exist_ok=True)
+UPDATED_THROUGH = "October 11, 2026"
 INK, MUTED, BLUE, TEAL, LINE, PAPER = "#142f43", "#607788", "#176b87", "#38a7a3", "#dbe6eb", "#f5f8fa"
 
 def text(x, y, value, size=20, fill=INK, weight=400, anchor="start", extra=""):
@@ -26,7 +27,7 @@ def frame(title, subtitle, body, height=920):
 <circle cx="1445" cy="83" r="126" fill="#ffffff" opacity=".045"/><circle cx="1360" cy="192" r="78" fill="#7ce0cf" opacity=".09"/>
 {text(92, 92, "AI4POLYMER  /  JOURNAL LANDSCAPE", 17, "#9ee0dd", 700, extra='letter-spacing="3"')}
 {text(92, 145, title, 40, "#ffffff", 700)}{text(92, 174, subtitle, 17, "#d1e1e8")}
-{body}<rect x="48" y="{height-55}" width="1504" height="1" fill="{LINE}"/>{text(58,height-25,"Source: supplied Web of Science journal-frequency summary · 61 visible titles · search window not supplied",14,MUTED)}
+{body}<rect x="48" y="{height-55}" width="1504" height="1" fill="{LINE}"/>{text(58,height-25,"Source: user-supplied analyze-all.txt · {len(rows)} journal titles · data updated through October 11, 2026 · search window not supplied",14,MUTED)}
 </svg>'''
 
 # 1. Ranked bar chart — make every label readable and highlight the top three.
@@ -53,7 +54,7 @@ total = sum(groups.values())
 cx, cy, radius, thick = 515, 530, 235, 86
 body = ['<rect x="48" y="220" width="1504" height="610" rx="22" fill="#ffffff" filter="url(#shadow)"/>']
 angle = -90
-labels={"聚合物/高分子":"Polymers","材料/复合材料":"Materials & composites","计算/AI":"Computing & AI","化学/计算化学":"Chemistry & cheminformatics","工程/应用":"Engineering & applications","综合/其他":"Multidisciplinary & other"}
+labels={}
 for (label, val), color in zip(sorted(groups.items(), key=lambda kv: -kv[1]), palette):
     label=labels.get(label,label)
     sweep = 360 * val / total
@@ -75,28 +76,32 @@ for i, (label,val) in enumerate(sorted(groups.items(),key=lambda kv:-kv[1])):
     body.append(text(legend_x+34,y,label,21,INK,600))
     body.append(text(1435,y,f"{val}  ·  {val/total:.1%}",18,MUTED,500,"end"))
 body.append(text(900, 730, "Title-based groups are exploratory; verify each journal’s official scope.", 16, MUTED))
-(out / "topic-landscape.svg").write_text(frame("Subject Groups in the Search Results", "Visible journal counts grouped by title-based subject hints.", "".join(body), 920), encoding="utf-8")
+(out / "topic-landscape.svg").write_text(frame("Subject Groups in the Search Results", "WoS records grouped by title-based subject hints.", "".join(body), 920), encoding="utf-8")
 
 # 3. Long-tail curve — a clean rank/count profile for the visible titles.
 ranked = sorted(rows, key=lambda r: -r["count"])
 W,H=1350,550; x0,y0=150,745; x1,y1=1460,295
 body=['<rect x="48" y="220" width="1504" height="610" rx="22" fill="#ffffff" filter="url(#shadow)"/>']
-for tick in [0,20,40,60,80,100]:
-    y=y0-(y0-y1)*tick/100
+max_count=max(r["count"] for r in ranked)
+step=max(1, round(max_count/5))
+y_ticks=sorted(set([0]+[min(max_count,step*i) for i in range(1,6)]+[max_count]))
+for tick in y_ticks:
+    y=y0-(y0-y1)*tick/max_count
     body.append(f'<path d="M{x0} {y:.1f} H{x1}" stroke="{LINE}" stroke-width="1"/>')
     body.append(text(x0-18,y+5,tick,14,MUTED,400,"end"))
-for tick in [1,10,20,30,40,50,61]:
+x_ticks=sorted(set([1,10,20,30,40,50,61,len(ranked)]))
+for tick in x_ticks:
     x=x0+(x1-x0)*(tick-1)/(len(ranked)-1)
     body.append(f'<path d="M{x:.1f} {y0} V{y0+5}" stroke="{MUTED}"/>')
     body.append(text(x,y0+28,tick,14,MUTED,400,"middle"))
 coords=[]
 for i,r in enumerate(ranked):
     x=x0+(x1-x0)*i/(len(ranked)-1)
-    y=y0-(y0-y1)*r["count"]/100
+    y=y0-(y0-y1)*r["count"]/max_count
     coords.append((x,y))
 line_path = "M" + " L".join(f"{x:.1f},{y:.1f}" for x,y in coords)
 body.append(f'<path d="{line_path}" fill="none" stroke="url(#bar)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>')
-for i in [0,1,2,4,9,19,39,60]:
+for i in sorted(set([0,1,2,4,9,19,39,60,len(coords)-1])):
     x,y=coords[i]
     body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="{TEAL}" stroke="#ffffff" stroke-width="3"/>')
     body.append(text(x,y-15,ranked[i]["count"],14,BLUE,700,"middle"))
@@ -104,4 +109,4 @@ body.append(text((x0+x1)/2,806,"Journal rank (descending WoS record count)",16,M
 body.append(f'<text x="68" y="520" transform="rotate(-90 68 520)" font-family="Arial, sans-serif" font-size="16" fill="{MUTED}">WoS records</text>')
 (out / "frequency-long-tail.svg").write_text(frame("A Long-Tail Frequency Distribution", "Many journals have few records beyond the leaders; consider topic fit as well.", "".join(body), 920), encoding="utf-8")
 
-print(f"Rendered 3 SVG figures for {len(rows)} visible journals.")
+print(f"Rendered 3 SVG figures for {len(rows)} journals.")
